@@ -7,7 +7,19 @@
     "dir::../../verilog/rtl/nvm_neuron_block.v",
     "dir::../../verilog/rtl/nvm_neuron_core_256x64.v",
     "dir::../../verilog/rtl/nvm_neuron_spike_out.v",
-    "dir::../../verilog/rtl/nvm_synapse_matrix.v"
+    "dir::../../verilog/rtl/nvm_synapse_matrix.v",
+    "dir::../../verilog/rtl/adaptive_fabric_top.v",
+    "dir::../../verilog/rtl/adaptive_fabric_top_tapeout.v",
+    "dir::../../verilog/rtl/i2c_detector.v",
+    "dir::../../verilog/rtl/mode_control_fsm.v",
+    "dir::../../verilog/rtl/mode_decoder.v",
+    "dir::../../verilog/rtl/protocol_detector.v",
+    "dir::../../verilog/rtl/protocol_fsm.v",
+    "dir::../../verilog/rtl/serial_fabric_top.v",
+    "dir::../../verilog/rtl/shared_datapath.v",
+    "dir::../../verilog/rtl/spi_detector.v",
+    "dir::../../verilog/rtl/sync_edge.v",
+    "dir::../../verilog/rtl/uart_detector.v"
   ],
   "EXTRA_VERILOG_MODELS": [
     "dir::../../ip/Neuromorphic_X1_32x32/hdl/NEUROMORPHIC_X1_stub.v"
@@ -59,7 +71,7 @@
   "RUN_CTS": true,
   "RUN_IRDROP_REPORT": false,
   "ERROR_ON_PDN_VIOLATIONS": false,
-  "IGNORE_DISCONNECTED_MODULES": ["user_project_wrapper"],
+  "IGNORE_DISCONNECTED_MODULES": ["user_project_wrapper", "mprj.synapse_matrix_inst.X1_inst"],
   "VERILOG_POWER_DEFINE": "USE_POWER_PINS",
   "ERROR_ON_SYNTH_CHECKS": false,
 
