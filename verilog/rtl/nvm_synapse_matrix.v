@@ -73,7 +73,7 @@ module nvm_synapse_matrix (
     .dc_bias(dc_bias)
   );
 
- 
+
   assign wbs_dat_o = {31'b0, slave_dat_o[0]};
 
 

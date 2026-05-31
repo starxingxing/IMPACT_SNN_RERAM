@@ -1,12 +1,12 @@
 {
   "project": {
-    "name": "caravel_user_Neuromorphic_X1_32x32",
+    "name": "IMPACT_SNN_RERAM",
     "type": "digital",
     "user": "kmooney4961@gmail.com",
     "version": "1",
     "user_project_wrapper_hash": "",
     "submission_state": "Draft",
-    "github_repo_url": "none",
+    "github_repo_url": "https://github.com/starxingxing/IMPACT_SNN_RERAM",
     "gpio_config": {
       "0": "13'h0403",
       "1": "13'h0403",
@@ -46,7 +46,8 @@
       "35": "13'h0c00",
       "36": "13'h0800",
       "37": "13'h1809"
-    }
+    },
+    "platform_project_id": "55ea45bc-1dfa-4f81-9964-467e774510da"
   },
   "precheck": {
     "version": "1.3.1",

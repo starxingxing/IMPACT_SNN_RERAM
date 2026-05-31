@@ -18,5 +18,6 @@
 includes: 
     - ram_word/ram_word.yaml
     - ram1k_smoke_test/ram1k_smoke_test.yaml
+    - x1_wb_direct_access/x1_wb_direct_access.yaml
 
 

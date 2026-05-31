@@ -1,1 +1,2 @@
 from user_proj_tests.ram_word.ram_word import ram_word
+from user_proj_tests.x1_wb_direct_access.x1_wb_direct_access import x1_wb_direct_access

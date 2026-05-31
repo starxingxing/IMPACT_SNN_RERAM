@@ -30,7 +30,7 @@ module nvm_neuron_core_256x64 (
     input         dc_bias
 );
 
- 
+
   wire synapse_matrix_select;
   wire neuron_spike_out_select;
   wire picture_done;
@@ -44,7 +44,7 @@ module nvm_neuron_core_256x64 (
     .spike_latch            (spike_latch)
   );
 
-  
+
   wire phase_select = (wbs_adr_i[15:12] == 4'h4);
   reg [5:0] phase_reg;   // 0..63: which neuron to accumulate into
 
@@ -54,14 +54,14 @@ module nvm_neuron_core_256x64 (
         phase_reg <= wbs_dat_i[5:0];
   end
 
-  
+
   reg phase_ack;
   always @(posedge wb_clk_i or posedge wb_rst_i) begin
     if (wb_rst_i) phase_ack <= 1'b0;
     else          phase_ack <= wbs_cyc_i & wbs_stb_i & wbs_we_i & phase_select;
   end
 
- 
+
   wire [31:0] slave_dat_o [1:0];
   wire  [1:0] slave_ack_o;
   wire [63:0] spike_o;
@@ -120,7 +120,7 @@ module nvm_neuron_core_256x64 (
     .spike_o      (spike_o)
   );
 
- 
+
   wire [31:0] spike_write_data =
     wbs_adr_i[2] ? {spike_o[63:48], spike_o[47:32]}
                  : {spike_o[31:16], spike_o[15:0]};

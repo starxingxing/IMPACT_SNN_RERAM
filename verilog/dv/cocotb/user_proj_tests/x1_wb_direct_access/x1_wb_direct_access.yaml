@@ -1,0 +1,2 @@
+Tests:
+    - {name: x1_wb_direct_access, sim: RTL}

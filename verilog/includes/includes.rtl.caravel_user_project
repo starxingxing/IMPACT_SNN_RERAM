@@ -14,7 +14,24 @@
 # SPDX-License-Identifier: Apache-2.0
 
 # Caravel user project includes
+-v $(USER_PROJECT_VERILOG)/rtl/Neuromorphic_X1_Beh.v
+-v $(USER_PROJECT_VERILOG)/rtl/nvm_core_decoder.v
+-v $(USER_PROJECT_VERILOG)/rtl/nvm_synapse_matrix.v
+-v $(USER_PROJECT_VERILOG)/rtl/nvm_neuron_block.v
+-v $(USER_PROJECT_VERILOG)/rtl/nvm_neuron_spike_out.v
+-v $(USER_PROJECT_VERILOG)/rtl/nvm_neuron_core_256x64.v
+-v $(USER_PROJECT_VERILOG)/rtl/sync_edge.v
+-v $(USER_PROJECT_VERILOG)/rtl/uart_detector.v
+-v $(USER_PROJECT_VERILOG)/rtl/spi_detector.v
+-v $(USER_PROJECT_VERILOG)/rtl/i2c_detector.v
+-v $(USER_PROJECT_VERILOG)/rtl/protocol_detector.v
+-v $(USER_PROJECT_VERILOG)/rtl/mode_control_fsm.v
+-v $(USER_PROJECT_VERILOG)/rtl/mode_decoder.v
+-v $(USER_PROJECT_VERILOG)/rtl/shared_datapath.v
+-v $(USER_PROJECT_VERILOG)/rtl/protocol_fsm.v
+-v $(USER_PROJECT_VERILOG)/rtl/serial_fabric_top.v
+-v $(USER_PROJECT_VERILOG)/rtl/adaptive_fabric_top.v
+-v $(USER_PROJECT_VERILOG)/rtl/adaptive_fabric_top_tapeout.v
 -v $(USER_PROJECT_VERILOG)/rtl/user_project_wrapper.v
--v $(USER_PROJECT_VERILOG)/../ip/Neuromorphic_X1_32x32/hdl/beh_model/Neuromorphic_X1_Beh.v
+-v $(USER_PROJECT_VERILOG)/rtl/user_proj_example.v
 
- 
