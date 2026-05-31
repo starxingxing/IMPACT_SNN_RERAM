@@ -1,0 +1,9 @@
+CARAVEL_ROOT: /home/impact/projects/memristor_development/tapeout_v2/IMPACT_SNN_RERAM/caravel
+MCW_ROOT: /home/impact/projects/memristor_development/tapeout_v2/IMPACT_SNN_RERAM/mgmt_core_wrapper
+PDK: sky130A
+PDK_ROOT: /home/impact/projects/memristor_development/tapeout_v2/IMPACT_SNN_RERAM/dependencies/pdks
+USER_PROJECT_ROOT: /home/impact/projects/memristor_development/tapeout_v2/IMPACT_SNN_RERAM
+caravan: false
+clk: 25
+emailto:
+- null
