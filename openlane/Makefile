@@ -26,8 +26,8 @@ SHELL := /bin/bash
 ifeq ($(origin LIBRELANE_RUN_TAG), undefined)
 export LIBRELANE_RUN_TAG := $(shell date '+%y_%m_%d_%H_%M')
 endif
-ifeq ($(origin CF_LIBRELANE_TAG), undefined)
-export CF_LIBRELANE_TAG := CI2511
+ifeq ($(origin LIBRELANE_TAG), undefined)
+export CF_LIBRELANE_TAG := CC2509
 endif
 
 export CARAVEL_ROOT := $(CARAVEL_ROOT)
@@ -57,11 +57,7 @@ docker_mounts += -m $(MCW_ROOT)
 endif
 
 ifeq ($(LIBRELANE_USE_NIX),1)
-ifeq ($(origin UPSTREAM_LIBRELANE_TAG), undefined)
 librelane_run = nix run github:chipfoundry/openlane-2/$(CF_LIBRELANE_TAG) --
-else
-librelane_run = nix run github:librelane/librelane/$(UPSTREAM_LIBRELANE_TAG) --
-endif
 else
 librelane_docker_args = $(shell test -t 0 || echo "--docker-no-tty")
 librelane_run = $(PROJECT_ROOT)/openlane/.venv/bin/python3 -m librelane $(docker_mounts) $(librelane_docker_args) --dockerized 
@@ -94,16 +90,12 @@ librelane-docker-image:
 	@echo "LibreLane will automatically pull the appropriate Docker image as needed."
 
 librelane-venv: $(PROJECT_ROOT)/openlane/.venv/manifest.txt
-$(PROJECT_ROOT)/openlane/.venv/manifest.txt: $(PROJECT_ROOT)/openlane/.version-$(CF_LIBRELANE_TAG)
+$(PROJECT_ROOT)/openlane/.venv/manifest.txt:
 	rm -rf $(PROJECT_ROOT)/openlane/.venv
 	python3 -m venv $(PROJECT_ROOT)/openlane/.venv
 	PYTHONPATH= $(PROJECT_ROOT)/openlane/.venv/bin/python3 -m pip install --upgrade pip
 	PYTHONPATH= $(PROJECT_ROOT)/openlane/.venv/bin/python3 -m pip install "https://github.com/chipfoundry/openlane-2/tarball/$(CF_LIBRELANE_TAG)"
 	PYTHONPATH= $(PROJECT_ROOT)/openlane/.venv/bin/python3 -m pip freeze > $@
-	
-$(PROJECT_ROOT)/openlane/.version-$(CF_LIBRELANE_TAG):
-	echo "$(CF_LIBRELANE_TAG)" > $@
-	python3 -c 'import os; [os.remove(f) for f in os.listdir("$(@D)") if f.startswith(".version-") and f != os.path.basename("$@")]'
 
 .PHONY: librelane-nix
 librelane-nix:

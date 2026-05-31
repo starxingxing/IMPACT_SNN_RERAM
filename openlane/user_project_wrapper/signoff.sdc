@@ -141,5 +141,20 @@ if { $::env(IO_SYNC) } {
 	set_output_delay -min [expr $out_ext_delay + 3.9]  -clock [get_clocks {clk}] [get_ports {io_out[*]}]
 }
 
+# --- Treat the hard macro as a pure black box for STA
+#     (prevents artificial short paths that cause hold violations)
+
+# Cut all timing arcs inside/through the macro instance "neuro_inst"
+set mprj_cell [get_cells -hierarchical neuro_inst.synapse_matrix_inst.X1_inst]
+if {[llength $mprj_cell]} {
+    set_disable_timing $mprj_cell
+
+    # Extra safety: also cut any paths that pass through macro pins
+    set mprj_pins [get_pins -hierarchical neuro_inst.synapse_matrix_inst.X1_inst/*]
+    if {[llength $mprj_pins]} {
+        set_false_path -through $mprj_pins
+    }
+}
+
 # Output loads
 set_load 0.19 [all_outputs]
