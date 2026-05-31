@@ -42,9 +42,40 @@ module user_project_wrapper #(
 );
 
 
-  // Fix for pull-up inputs
+  wire scan_in_cc;
+  wire scan_in_dl;
+  wire scan_in_dr;
+  wire tm;
+  wire scan_out_cc;
+
+  // This is safe for USER analog / unused pins
+  //io_out = {38{1'b0}};
+  //io_oeb = {38{1'b1}};
+
+  // GPIO 21 = ScanInDR, USER input pulldown
+  assign scan_in_dr = io_in[21];
+  assign io_out[21] = 1'b0;
+  assign io_oeb[21] = 1'b0;
+
+  // GPIO 22 = ScanInDL, USER input pullup
+  assign scan_in_dl = io_in[22];
   assign io_out[22] = 1'b1;
+  assign io_oeb[22] = 1'b0;
+
+  // GPIO 23 = ScanOutCC, USER output
+  assign io_out[23] = scan_out_cc;
+  assign io_oeb[23] = 1'b0;
+
+  // GPIO 35 = ScanInCC, USER input pulldown
+  assign scan_in_cc = io_in[35];
+  assign io_out[35] = 1'b0;
+  assign io_oeb[35] = 1'b0;
+
+  // GPIO 36 = TM, USER input pullup
+  assign tm = io_in[36];
   assign io_out[36] = 1'b1;
+  assign io_oeb[36] = 1'b0;
+
     // -----------------------------
     // Instantiate your hard macro
     // -----------------------------
@@ -74,11 +105,11 @@ module user_project_wrapper #(
   .wbs_ack_o (wbs_ack_o),
 
   // Scan/Test
-  .ScanInCC  (io_in[35]),
-  .ScanInDL  (io_in[22]),
-  .ScanInDR  (io_in[21]),
-  .TM        (io_in[36]),
-  .ScanOutCC (io_out[23]),
+  .ScanInCC  (scan_in_cc),
+  .ScanInDL  (scan_in_dl),
+  .ScanInDR  (scan_in_dr),
+  .TM        (tm),
+  .ScanOutCC (scan_out_cc),
 
   // Analog / bias pins (drive from analog_io[] wires you already built)
   .Iref          (analog_io[27]),

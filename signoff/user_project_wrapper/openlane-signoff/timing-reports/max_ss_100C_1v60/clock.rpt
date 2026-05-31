@@ -3,14 +3,14 @@ Sources: wb_clk_i
 Generated: no
 Virtual: yes
 Propagated: no
-Period: 100.000000
+Period: 25.000000
 
 ===========================================================================
 report_clock_properties
 ============================================================================
 Clock                   Period          Waveform
 ----------------------------------------------------
-clk                 100.000000    0.000000 50.000000
+clk                  25.000000    0.000000 12.500000
 
 ===========================================================================
 report_clock_latency
@@ -19,24 +19,24 @@ Clock clk
 rise -> rise
     min     max
 4.650000 5.570000 source latency
-6.261663         network latency _10642_/CLK
-        7.834449 network latency _11345_/CLK
+6.211754         network latency neuro_inst.synapse_matrix_inst.X1_inst/wb_clk_i
+        7.539893 network latency _10805_/CLK
 ---------------
-10.911663 13.404449 latency
-        2.492786 skew
+10.861754 13.109894 latency
+        2.248140 skew
 
 fall -> fall
     min     max
 4.650000 5.570000 source latency
-6.209774         network latency _10642_/CLK
-        7.674732 network latency _11345_/CLK
+6.155057         network latency neuro_inst.synapse_matrix_inst.X1_inst/wb_clk_i
+        7.448001 network latency _10805_/CLK
 ---------------
-10.859774 13.244732 latency
-        2.384958 skew
+10.805057 13.018002 latency
+        2.212945 skew
 
 
 
 ===========================================================================
 report_clock_min_period
 ============================================================================
-clk period_min = 23.54 fmax = 42.48
+clk period_min = 19.24 fmax = 51.98
